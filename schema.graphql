@@ -18,3 +18,15 @@ type Transfer @entity {
   to: Bytes! # address
   tokenId: BigInt! # uint256
 }
+
+type RandomPack @entity {
+  id: ID!
+  owner: Bytes! # address
+  pieces: [BigInt!]! # uint256
+}
+
+type Pack @entity {
+  id: ID!
+  tokenId: BigInt! # uint256
+  pieces: [BigInt!]! # uint256
+}

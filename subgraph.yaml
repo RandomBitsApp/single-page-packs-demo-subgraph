@@ -27,3 +27,23 @@ dataSources:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/mapping.ts
+  - kind: ethereum
+    name: Pack
+    network: matic
+    source:
+      address: "0x461A6EAd396C4415BcDe60982eE76775d87f33Fb"
+      abi: SinglePagePacks
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Pack
+      abis:
+        - name: SinglePagePacks
+          file: ./abis/SinglePagePacks.json
+      eventHandlers:
+        - event: Pack(indexed uint256,uint256[10])
+          handler: handlePack
+      file: ./src/mapping.ts
+  
