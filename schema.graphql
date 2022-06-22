@@ -22,7 +22,7 @@ type Transfer @entity {
 type RandomPack @entity {
   id: ID!
   owner: Bytes! # address
-  pieces: [BigInt!]! # uint256
+  pieces: [BigInt!] # uint256
 }
 
 type Pack @entity {
