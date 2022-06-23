@@ -24,9 +24,3 @@ type RandomPack @entity {
   owner: Bytes! # address
   pieces: [BigInt!] # uint256
 }
-
-type Pack @entity {
-  id: ID!
-  tokenId: BigInt! # uint256
-  pieces: [BigInt!]! # uint256
-}
