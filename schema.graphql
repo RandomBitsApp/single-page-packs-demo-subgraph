@@ -1,12 +1,17 @@
-type Transfer @entity {
-  id: ID!
-  from: Bytes! # address
-  to: Bytes! # address
-  tokenId: BigInt! # uint256
+type Transfer @entity(immutable: true) {
+    id: ID!
+    from: Bytes! # address
+    to: Bytes! # address
+    tokenId: BigInt! # uint256
 }
 
 type StickerPack @entity {
-  id: ID!
-  owner: Bytes! # address
-  pieces: [BigInt!]! # uint256
+    id: ID!
+    owner: Player! # address
+    pieces: [Int!]! # uint256
+}
+
+type Player @entity {
+    id:  Bytes!
+    stickerPacks: [StickerPack!]! @derivedFrom(field: "owner")
 }

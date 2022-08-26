@@ -6,7 +6,7 @@ dataSources:
     name: SinglePageRandomPack
     network: matic
     source:
-      address: "0xd705EaBd30b8f60b38846c45D6Ce16B9800cD7D2"
+      address: "0xd31Acfbb42D9Ce3AC4A64f14dDAd1E2615a261ce"
       abi: SinglePageRandomPack
     mapping:
       kind: ethereum/events
@@ -27,7 +27,7 @@ dataSources:
     name: Pack
     network: matic
     source:
-      address: "0x96cD23a3a70f8666Fb81FF7bd4FdcFb76Aaa6E67"
+      address: "0x03B14437579752b670CD2c9D6358a3c12a8FFd7e"
       abi: SinglePagePacks
     mapping:
       kind: ethereum/events
@@ -39,7 +39,7 @@ dataSources:
         - name: SinglePagePacks
           file: ./abis/SinglePagePacks.json
       eventHandlers:
-        - event: Pack(indexed uint256,uint256[10])
+        - event: Pack(indexed uint256,uint8[10])
           handler: handlePack
       file: ./src/mapping.ts
   

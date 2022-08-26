@@ -4,9 +4,9 @@ import {
 import {Pack as PackEvent} from '../generated/Pack/SinglePagePacks';
 import {
     Transfer,
-    StickerPack,
+    StickerPack, Player,
 } from '../generated/schema';
-import {Address} from '@graphprotocol/graph-ts';
+import {Address, BigInt} from '@graphprotocol/graph-ts';
 
 export function handleTransfer(event: TransferEvent): void {
     let entity = new Transfer(
@@ -16,12 +16,19 @@ export function handleTransfer(event: TransferEvent): void {
     entity.to = event.params.to;
     entity.tokenId = event.params.tokenId;
     if (Address.fromBytes(entity.from) == Address.zero()) {
-        const reandomPack = new StickerPack(
+        const stickerPack = new StickerPack(
             event.params.tokenId.toHex() + '-pack',
         );
-        reandomPack.owner = entity.to;
-        reandomPack.pieces = [];
+        stickerPack.owner = entity.to;
+        stickerPack.pieces = [];
+        stickerPack.save();
     }
+    let player = Player.load(event.params.to)
+    if (player == null) {
+        player = new Player(event.params.to)
+        player.save()
+    }
+
     entity.save();
 }
 
@@ -30,4 +37,5 @@ export function handlePack(event: PackEvent): void {
         event.params.tokenId.toHex() + '-pack'
     )!;
     entity.pieces = event.params.pieces;
+    entity.save()
 }

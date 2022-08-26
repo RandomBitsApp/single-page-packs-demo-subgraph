@@ -12,7 +12,7 @@
         "indexed": false,
         "internalType": "uint256[10]",
         "name": "pieces",
-        "type": "uint256[10]"
+        "type": "uint8[10]"
       }
     ],
     "name": "Pack",
